@@ -1,5 +1,28 @@
 include_directories(${libzmq_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+include(CheckIncludeFiles)
+include(CheckFunctionExists)
+
+check_include_files("alloca.h" HAVE_ALLOCA_H)
+check_include_files("arpa/inet.h" HAVE_ARPA_INET_H)
+check_function_exists("clock_gettime" HAVE_CLOCK_GETTIME)
+if(WIN32)
+	set(ZMQ_HAVE_WINDOWS 1)
+endif(WIN32)
+if(MINGW)
+	set(ZMQ_HAVE_MINGW32 1)
+endif(MINGW)
+if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+	set(ZMQ_HAVE_LINUX 1)
+endif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+
+if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+	set(ZMQ_HAVE_OSX 1)
+endif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/platform.hpp.cmakein ${CMAKE_CURRENT_BINARY_DIR}/platform.hpp)
+
 set(libzmq_la_SOURCES
     clock.cpp  
     ctx.cpp  
