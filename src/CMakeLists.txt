@@ -1,0 +1,60 @@
+include_directories(${libzmq_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+set(libzmq_la_SOURCES
+    clock.cpp  
+    ctx.cpp  
+    decoder.cpp  
+    devpoll.cpp  
+    dist.cpp  
+    encoder.cpp  
+    epoll.cpp  
+    err.cpp  
+    fq.cpp  
+    io_object.cpp  
+    io_thread.cpp  
+    ip.cpp  
+    ipc_address.cpp  
+    ipc_connecter.cpp  
+    ipc_listener.cpp  
+    kqueue.cpp  
+    lb.cpp  
+    mailbox.cpp  
+    msg.cpp  
+    mtrie.cpp  
+    object.cpp  
+    options.cpp  
+    own.cpp  
+    pair.cpp  
+    pgm_receiver.cpp  
+    pgm_sender.cpp  
+    pgm_socket.cpp  
+    pipe.cpp  
+    poll.cpp  
+    poller_base.cpp  
+    pull.cpp  
+    push.cpp  
+    reaper.cpp  
+    pub.cpp  
+    random.cpp  
+    rep.cpp  
+    req.cpp  
+    select.cpp  
+    session_base.cpp  
+    signaler.cpp  
+    socket_base.cpp  
+    stream_engine.cpp  
+    sub.cpp  
+    tcp_address.cpp  
+    tcp_connecter.cpp  
+    tcp_listener.cpp  
+    thread.cpp  
+    trie.cpp  
+    xpub.cpp  
+    xrep.cpp  
+    xreq.cpp  
+    xsub.cpp  
+    zmq.cpp  
+    zmq_utils.cpp
+)
+
+add_library(zmq ${libzmq_la_SOURCES})
